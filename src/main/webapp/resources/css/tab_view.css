@@ -1,0 +1,68 @@
+
+form {
+    background: transparent;
+    padding: 0px;
+}
+
+.tab-view-container {
+    text-align: left;
+
+}
+
+#tab_view_title {
+    background: transparent;
+    color: var(--content-text-color);
+    height: 50px;
+    display: block;
+    text-transform: uppercase;
+    text-align: right;
+    height: 30px;
+}
+
+/** Pozadí záložek */
+.tab-view-container .tab_view ul{
+    background: transparent;
+    text-transform: uppercase;
+}
+
+/** Pozadí záložky */
+.tab-view-container .ui-tabs.ui-tabs-top>.ui-tabs-nav li.ui-tabs-header {
+    background: var(--main-color);
+    border-bottom: var(--main-border-style);
+    color: var(--main-text-color);
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav li.ui-tabs-header.ui-state-hover{
+    background: var(--hover-color-medium);
+    outline: none;
+    border-bottom: var(--main-border-style);
+}
+
+/** Vybraná záložka **/
+.ui-tabs.ui-tabs-top>.ui-tabs-nav li.ui-tabs-header.ui-state-active {
+    border-bottom: var(--main-border-style);
+    background: var(--side-color);
+
+}
+
+.tab-view-container .ui-tabs.ui-tabs-top>.ui-tabs-nav li.ui-tabs-header.ui-state-active {
+    border-color: black;
+}
+
+
+/** Vybraná záložka label **/
+.ui-tabs.ui-tabs-top>.ui-tabs-nav li.ui-tabs-header.ui-state-active a {
+    color: var(--main-text-color);
+}
+
+/**Tabs panel **/
+.tab-view-container .ui-tabs .ui-tabs-panels {
+    background: var(--content-color);
+    color: var(--content-text-color);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/**Tabs bg **/
+.tab-view-container .ui-tabs.ui-tabs-top>.ui-tabs-nav {
+    background: transparent;
+}

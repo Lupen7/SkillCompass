@@ -1,0 +1,57 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<xhtml xmlns = "http://www.w3.org/1999/xhtml"   
+       xmlns:h = "http://java.sun.com/jsf/html"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="list.css"/>
+        <h:outputStylesheet library="css" name="global.css"/>
+    </h:head>
+    <h:body>
+        <h1>Muj list is loaded</h1>
+        <div id="list">
+            <div id="list_label">
+                <ui:insert name="list_label" >
+                    Default list
+                </ui:insert>
+            </div>
+            <div id="list_body">
+                <h:form>
+                    <h:dataTable value="#{persistableBean.persistables}" var="persistable" class="list_table">
+
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{persistable.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                                #{persistable.name}
+                        </h:column>
+                        <ui:insert name="extra_columns" >
+                            Default extra columns
+                        </ui:insert>
+                        <h:column>
+                            <div id="detail_btn" class="btn">
+                                <h:commandLink id="sidlink" action="#{persistableBean.detail}" target="_blank">  
+                                    <h:graphicImage library="icons" name="next_grey.png" width="20" height="20"/>
+                                </h:commandLink>
+
+                            </div>
+                        </h:column>
+                        <f:facet name="footer">
+                            <div id="new_btn" class="btn">
+                                <h:commandLink action="#{persistableBean.detail}" target="_blank">  
+                                    NEW
+                                </h:commandLink>
+
+                            </div>
+                        </f:facet>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</xhtml>	

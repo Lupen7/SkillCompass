@@ -1,0 +1,61 @@
+:root {
+    --main-color: #212F3D;
+    --side-color: #d19900;
+    --content-color: white;
+    --main-text-color: white;
+    --side-text-color: white;
+    --content-text-color: black;
+    --hover-color-light: #f7f7f7;
+    --hover-color-medium: grey;
+    --hover-color-bold: #e09719;
+    --spacing-unit: 16px;
+    --font: Verdana;
+    --main-border-style: 2px solid black;
+    --side-border-style: 1px solid grey;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+
+    margin: auto;
+}
+
+body {
+    background-color: white;
+    color: var(--secondary-text-color);
+    font-family: var(--font);
+    text-align: center;
+}
+
+#content-container {
+    padding: 80px 160px 80px 160px;
+}
+
+
+/** COMPONENTS - FORM **/
+.form-field {
+    width: 190px; background: yellow;
+}
+
+.form-field .field-label{
+    font-size: 12px;
+    width:100%;
+}
+
+.form-field .field-input{
+    background: transparent;
+    width:100%;
+    height: 40px;
+    border: none;
+    border-bottom: var(--side-border-style);
+    color:var(--content-text-color);
+    font-size: 20px;
+}
+.form-field .field-input:focus{
+    outline: none;
+}

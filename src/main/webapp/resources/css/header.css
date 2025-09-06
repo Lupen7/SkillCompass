@@ -1,0 +1,24 @@
+
+#menu-container {
+
+}
+
+/** menu background **/
+#menu-form .ui-menubar{
+    background: var(--main-color);
+}
+
+/** submenu **/
+#menu-form .ui-menu-list .ui-menu-child .ui-menuitem{ 
+  text-align: left;
+ /* background: var(--side-color);*/
+}
+
+#menu-form .ui-menu{ 
+    border: none;
+    border-bottom: var(--main-border-style);
+}
+
+.ui-menuitem-text {
+   
+}

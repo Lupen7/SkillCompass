@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<xhtml xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet library="css" name="global.css"/>
+        <h:outputStylesheet library="css" name="header.css"/>
+        <ui:insert name="title" >
+            <title>Default title</title>
+        </ui:insert>
+    </h:head>
+    <h:body>
+        <ui:insert name="header" >
+            <ui:include src="../fragments/header.xhtml"/>
+        </ui:insert> 
+
+        <div id="content-container">
+            <ui:insert name="content" >
+                <p>Default content goes here</p>
+            </ui:insert>
+        </div>
+
+        <ui:insert name="footer" >
+            <p> Default footer </p>
+        </ui:insert>
+    </h:body>
+</xhtml>
