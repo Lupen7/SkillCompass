@@ -35,7 +35,7 @@
                         </ui:insert>
                         <h:column>
                             <div id="detail_btn" class="btn">
-                                <h:commandLink id="sidlink" action="#{persistableBean.detail}" target="_blank">  
+                                <h:commandLink id="sidlink" action="#{persistableBean.openDetail(persistable)}"> 
                                     <h:graphicImage library="icons" name="next_grey.png" width="20" height="20"/>
                                 </h:commandLink>
 
@@ -43,7 +43,7 @@
                         </h:column>
                         <f:facet name="footer">
                             <div id="new_btn" class="btn">
-                                <h:commandLink action="#{persistableBean.detail}" target="_blank">  
+                                <h:commandLink action="#{persistableBean.detail()}" target="_blank">  
                                     NEW
                                 </h:commandLink>
 

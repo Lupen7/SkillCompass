@@ -5,13 +5,13 @@
 package bean;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
-import model.Person;
 import model.Persistable;
+import model.Person;
 import service.PersistableService;
 
 /**
@@ -19,18 +19,17 @@ import service.PersistableService;
  * @author Luboš
  */
 @Named(value = "persistableBean")
-@RequestScoped
+@SessionScoped
 public class PersistableBean implements Serializable {
 
     @Inject
     private PersistableService service;
     private List<? extends Persistable> persistables;
-
+    private Persistable selectedPersistable;
+    protected String detail = "default";
+    private final String REDIRECT = ".xhtml" + "?faces-redirect=true";
+            
     public PersistableBean() {
-        
-    }
-
-    public void detail() {
 
     }
 
@@ -42,4 +41,28 @@ public class PersistableBean implements Serializable {
     public void setPersistables(List<? extends Persistable> list) {
         this.persistables = list;
     }
+
+    public Persistable getSelectedPersistable() {
+        return selectedPersistable;
+    }
+
+    public void setSelectedPersistable(Persistable persistable) {
+        System.out.println("\n >>>> Setting selected persistable of class: " + persistable.getClass());
+        this.selectedPersistable = persistable;
+    }
+
+    public String openDetail(Persistable persistable) {
+        setSelectedPersistable(persistable);
+        return getDetail();
+    }
+
+    public String getDetail() {
+        String current_detail = this.detail;
+        if (this.selectedPersistable instanceof Person) {
+            current_detail = "person";
+        }
+        System.out.println("\n>>> Detail is : " + current_detail);
+        return current_detail + REDIRECT;
+    }
+
 }

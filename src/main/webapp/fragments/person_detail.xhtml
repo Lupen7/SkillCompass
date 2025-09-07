@@ -11,11 +11,11 @@
         <h:panelGrid columns="4">
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">ID</h:outputLabel>
-                <h:inputText class="field-input"/>
+                <h:inputText class="field-input" value="#{personBean.selectedPersistable.id}"/>
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
-                <h:outputLabel class="field-label">Name</h:outputLabel>
-                <h:inputText class="field-input"/>
+                <h:outputLabel class="field-label">First name</h:outputLabel>
+                <h:inputText class="field-input" value="#{persistableBean.selectedPersistable.name}"/>
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">Surname</h:outputLabel>

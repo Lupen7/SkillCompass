@@ -8,6 +8,7 @@ import jakarta.inject.Named;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import java.util.List;
+import model.Persistable;
 import model.Person;
 import service.PersonService;
 
@@ -15,22 +16,19 @@ import service.PersonService;
  *
  * @author Luboš
  */
-@Named(value = "chargerBean")
+@Named(value = "personBean")
 @Dependent
-public class PersonBean {
+public class PersonBean extends PersistableBean{
 
     @Inject
     private PersonService service;
     private List<Person> personList;
+    private final String detail = "person.xhtml";
     
     public PersonBean() {
+        System.out.println("----- PersonBean initialized -----");
     }
+
     
-    public List<Person> getChargerList() {
-       if (personList == null) {
-            personList = service.findAll();
-        }
-        return personList;
-    }
     
 }

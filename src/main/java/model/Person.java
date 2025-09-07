@@ -1,8 +1,10 @@
-
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
@@ -25,11 +27,15 @@ import java.util.Date;
 public class Person extends Persistable implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Column(name = "surname")
     private String surname;
     @Column(name = "birth_date")
     private Date birthday;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_fk")
+    private Address address;
 
     public Date getBirthday() {
         return birthday;
@@ -38,7 +44,7 @@ public class Person extends Persistable implements Serializable {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-   
+
     public String getSurname() {
         return surname;
     }
@@ -47,8 +53,6 @@ public class Person extends Persistable implements Serializable {
         this.surname = surname;
     }
 
-  
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -56,6 +60,14 @@ public class Person extends Persistable implements Serializable {
         return hash;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+   
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -73,5 +85,5 @@ public class Person extends Persistable implements Serializable {
     public String toString() {
         return "model.Person[ id=" + id + " ]";
     }
-    
+
 }
