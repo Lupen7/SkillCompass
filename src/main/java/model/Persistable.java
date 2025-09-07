@@ -19,10 +19,10 @@ public abstract class Persistable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    public Integer id;
+    protected Integer id;
     @Size(max = 2147483647)
     @Column(name = "\"name\"")
-    public String name;
+    protected String name;
     
     public Persistable () {
         

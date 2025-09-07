@@ -4,7 +4,6 @@
  */
 package bean;
 
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
@@ -25,7 +24,7 @@ public class PersistableBean implements Serializable {
     @Inject
     private PersistableService service;
     private List<? extends Persistable> persistables;
-    private Persistable selectedPersistable;
+    protected Persistable selectedPersistable;
     protected String detail = "default";
     private final String REDIRECT = ".xhtml" + "?faces-redirect=true";
             
@@ -50,19 +49,4 @@ public class PersistableBean implements Serializable {
         System.out.println("\n >>>> Setting selected persistable of class: " + persistable.getClass());
         this.selectedPersistable = persistable;
     }
-
-    public String openDetail(Persistable persistable) {
-        setSelectedPersistable(persistable);
-        return getDetail();
-    }
-
-    public String getDetail() {
-        String current_detail = this.detail;
-        if (this.selectedPersistable instanceof Person) {
-            current_detail = "person";
-        }
-        System.out.println("\n>>> Detail is : " + current_detail);
-        return current_detail + REDIRECT;
-    }
-
 }

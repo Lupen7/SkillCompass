@@ -11,7 +11,6 @@
         <h:outputStylesheet library="css" name="global.css"/>
     </h:head>
     <h:body>
-        <h1>Muj list is loaded</h1>
         <div id="list">
             <div id="list_label">
                 <ui:insert name="list_label" >
@@ -35,18 +34,13 @@
                         </ui:insert>
                         <h:column>
                             <div id="detail_btn" class="btn">
-                                <h:commandLink id="sidlink" action="#{persistableBean.openDetail(persistable)}"> 
-                                    <h:graphicImage library="icons" name="next_grey.png" width="20" height="20"/>
-                                </h:commandLink>
-
+                                <ui:insert name="spec_detail_button" >Default button</ui:insert>   
                             </div>
                         </h:column>
+                                     
                         <f:facet name="footer">
                             <div id="new_btn" class="btn">
-                                <h:commandLink action="#{persistableBean.detail()}" target="_blank">  
-                                    NEW
-                                </h:commandLink>
-
+                               <ui:insert name="spec_new_button" >Default new button</ui:insert>
                             </div>
                         </f:facet>
                     </h:dataTable>

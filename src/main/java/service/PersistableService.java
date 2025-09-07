@@ -24,6 +24,7 @@ public abstract class PersistableService {
 
     
     public abstract List<? extends Persistable> findAll();
+    public abstract Persistable findById(long id);
 
     /*
     public List<Persistable> findAll(Class clazz, String db_table) {

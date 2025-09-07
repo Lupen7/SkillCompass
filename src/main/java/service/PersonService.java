@@ -8,8 +8,11 @@ import model.Person;
 import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import model.Persistable;
 
 @ApplicationScoped
 public class PersonService extends PersistableService{
@@ -27,6 +30,22 @@ public class PersonService extends PersistableService{
         System.out.println("\n >>>> looking for persons >>> ");
         return em.createQuery("SELECT u FROM Person u ORDER BY u.id", Person.class)
                  .getResultList();
+    }
+
+    @Override
+    public Person findById(long id) {
+        System.out.println("\n >>>> looking for person, ID: " + id);
+
+        TypedQuery<Person> query = em.createNamedQuery("Person.findById", Person.class);
+        // Set the value of the named parameter
+        query.setParameter("id", id);
+        // Execute the query and get the single result
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("No Person of id: " + id + "was found.");
+            return null; // or throw a custom exception
+        }
     }
 
  

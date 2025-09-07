@@ -5,31 +5,37 @@
                 xmlns:p="http://primefaces.org/ui"
                 template = "../templates/tab_view.xhtml">
 
+    <ui:define name="tabs_title">
+        <h:outputLabel value="#{personBean.fullName}"/>
+    </ui:define>
     <ui:define name="tab1">
-
-
         <h:panelGrid columns="4">
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">ID</h:outputLabel>
-                <h:inputText class="field-input" value="#{personBean.selectedPersistable.id}"/>
+                <h:inputText class="field-input" value="#{personBean.selectedPerson.id}"/>
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">First name</h:outputLabel>
-                <h:inputText class="field-input" value="#{persistableBean.selectedPersistable.name}"/>
+                <h:inputText class="field-input" value="#{personBean.selectedPerson.name}"/>
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">Surname</h:outputLabel>
-                <h:inputText class="field-input"/>
-             </h:panelGroup>
+                <h:inputText class="field-input" value="#{personBean.selectedPerson.surname}"/>
+            </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">Date of birth</h:outputLabel>
-                <h:inputText class="field-input"/>
-             </h:panelGroup>
-
-
+                <h:inputText class="field-input" value="#{personBean.selectedPerson.birthday}"/>
+            </h:panelGroup>
         </h:panelGrid>
 
+        <ui:include src="address.xhtml">
+            <ui:param name="address" value="#{personBean.selectedPerson.address}"/>
+        </ui:include>
+
+        <!-- The reusable footer component -->
+        <ui:include src="detail_footer.xhtml">
+
+        </ui:include>
+
     </ui:define>	
-
-
 </ui:composition>	

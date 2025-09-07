@@ -1,0 +1,10 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:panelGroup id="button_panel" class="button_footer" layout="block">
+        <h:commandButton value="Save" action="#{saveAction}" styleClass="save-button generic_button" />
+        <h:commandButton value="Cancel" action="#{cancelAction}" styleClass="cancel-button generic_button" immediate="true" />
+        <h:commandButton value="Delete" action="#{deleteAction}" styleClass="delete-button generic_button" rendered="true" />
+    </h:panelGroup>
+</ui:composition>

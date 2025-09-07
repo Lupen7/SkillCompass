@@ -4,11 +4,13 @@
  */
 package bean;
 
-import jakarta.inject.Named;
+import jakarta.enterprise.context.ConversationScoped;
 import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
-import java.util.List;
-import model.Persistable;
 import model.Person;
 import service.PersonService;
 
@@ -17,18 +19,33 @@ import service.PersonService;
  * @author Luboš
  */
 @Named(value = "personBean")
-@Dependent
-public class PersonBean extends PersistableBean{
+@ConversationScoped
+public class PersonBean extends PersistableBean {
 
     @Inject
     private PersonService service;
-    private List<Person> personList;
-    private final String detail = "person.xhtml";
-    
-    public PersonBean() {
-        System.out.println("----- PersonBean initialized -----");
+    private Person selectedtPerson;
+
+    public String openDetail(int personId) {
+        System.out.println("PersonId for detail is : " + personId);
+        if (personId != 0) {
+            this.selectedtPerson = service.findById(personId);
+        } else {
+            selectedtPerson = new Person();
+        }
+        return "person" + ".xhtml";
     }
 
-    
-    
+    public Person getSelectedPerson() {
+        return selectedtPerson;
+    }
+
+    public void setSelectedPerson(Person selectedtPerson) {
+        this.selectedtPerson = selectedtPerson;
+    }
+
+    public String getFullName() {
+        return (this.selectedtPerson.getName() + ' ' + this.selectedtPerson.getSurname());
+    }
+
 }

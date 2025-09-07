@@ -21,5 +21,13 @@
         </h:column>
     </ui:define>
 
+    <ui:define name="spec_detail_button">
+        <h:commandLink id="person_detail_from_list" action="#{personBean.openDetail(persistable.id)}">
+            <h:graphicImage library="icons" name="next_grey.png" width="20" height="20"/>
+        </h:commandLink>
+    </ui:define>
+     <ui:define name="spec_new_button">
+        <h:commandLink id="person_new_from_list" action="#{personBean.openDetail(0)}">New</h:commandLink>
+    </ui:define>
 
 </ui:composition>	

@@ -10,7 +10,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
        xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="jakarta.faces.html">
     <h:head>
-        <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="tab_view.css"/>
     </h:head>
@@ -19,11 +18,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
             <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
 
-            <div id="tab_view_title">
-                <h2>Default</h2>
-            </div>
             <div class="tab-view-container">
-
+            <div id="tab_view_title">
+                <ui:insert name="tabs_title"/>
+            </div>
                 <p:tabView class="tab_view">
                     <p:tab title="Header I">
                         <ui:insert name="tab1"/>

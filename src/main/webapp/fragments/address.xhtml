@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition>
+        <h:panelGrid columns="4" id="addressPanel">
+            <h:panelGroup layout="block" class="form-field">
+                <h:outputLabel class="field-label" for="street" value="Line"/>
+                <h:inputText class="field-input" id="street" value="#{address.line}" required="true"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-field">
+                <h:outputLabel class="field-label" for="city" value="City"/>
+                <h:inputText class="field-input" id="city" value="#{address.city}" required="true"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="form-field">
+                <h:outputLabel class="field-label" for="zip" value="Postal code"/>
+                <h:inputText class="field-input" id="zip" value="#{address.postalCode}" required="true"/>
+            </h:panelGroup>
+        </h:panelGrid>
+    </ui:composition>
+
+</html>
