@@ -20,7 +20,7 @@
 
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label" for="state" value="State"/>
-                <h:selectOneMenu class="field-input" data-bind=""value="#{address.state.code}">
+                <h:selectOneMenu class="field-input" value="#{address.state.code}">
                     <f:selectItem itemLabel="-- Select an option --" itemValue="" noSelectionOption="true" />
                     <f:selectItems value="#{codelistBean.getCodeListItems('STATES')}" 
                                    var="state" 
