@@ -2,9 +2,6 @@
 <persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
   <persistence-unit name="com.globex_SkillCompass_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>java:app/postgres</jta-data-source>
-    <class>model.Address</class>
-    <class>model.Person</class>
-    <class>model.codelist.CLState</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

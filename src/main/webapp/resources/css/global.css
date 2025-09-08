@@ -73,9 +73,6 @@ body {
     width: 100px;
 }
 
-.generic_button:hover {
-    background: var(--hover-color-medium);
-}
 .save-button {
     
 }

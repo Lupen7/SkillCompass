@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import model.codelist.CLState;
+import model.codelist.ClState;
 
 /**
  *
@@ -44,7 +44,7 @@ public class Address extends Persistable implements Serializable {
     private String postalCode;
     @JoinColumn(name = "state_fk", referencedColumnName = "code")
     @ManyToOne
-    private CLState state;
+    private ClState stateFk;
 
     public Address() {
     }
@@ -77,12 +77,12 @@ public class Address extends Persistable implements Serializable {
         this.postalCode = postalCode;
     }
 
-    public CLState getState() {
-        return state;
+    public ClState getStateFk() {
+        return stateFk;
     }
 
-    public void setState(CLState state) {
-        this.state = state;
+    public void setStateFk(ClState stateFk) {
+        this.stateFk = stateFk;
     }
 
     @Override
