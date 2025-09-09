@@ -5,12 +5,14 @@
 package bean;
 
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
 import model.Persistable;
 import model.Person;
+import model.codelist.ViewType;
 import service.PersistableService;
 
 /**
@@ -18,18 +20,40 @@ import service.PersistableService;
  * @author Luboš
  */
 @Named(value = "persistableBean")
-@SessionScoped
+@ViewScoped
 public class PersistableBean implements Serializable {
 
     @Inject
     private PersistableService service;
-    private List<? extends Persistable> persistables;
+    protected List<? extends Persistable> persistables;
     protected Persistable selectedPersistable;
-    protected String detail = "default";
-    private final String REDIRECT = ".xhtml" + "?faces-redirect=true";
-            
+    protected boolean isEditable = false;
+    protected ViewType viewType = ViewType.LIST;
+
     public PersistableBean() {
 
+    }
+
+    public boolean isIsEditable() {
+        return isEditable;
+    }
+
+    public void setIsEditable(boolean isEditable) {
+        this.isEditable = isEditable;
+    }
+
+    public void editAction() {
+        System.out.println("Persistable bean: edit action called...");
+        this.isEditable = !this.isEditable;
+    }
+
+    public void cancelAction() {
+        setViewType(ViewType.LIST);
+    }
+
+    public void openDetail(Persistable p) {
+        setSelectedPersistable(p);
+        setViewType(ViewType.DETAIL);
     }
 
     public List<? extends Persistable> getPersistables() {
@@ -46,7 +70,16 @@ public class PersistableBean implements Serializable {
     }
 
     public void setSelectedPersistable(Persistable persistable) {
-        System.out.println("\n >>>> Setting selected persistable of class: " + persistable.getClass());
+        System.out.println("Setting selected persistable of class: " + persistable.getClass());
         this.selectedPersistable = persistable;
     }
+
+    public ViewType getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(ViewType vt) {
+        this.viewType = vt;
+    }
+
 }

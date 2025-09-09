@@ -4,7 +4,8 @@
 
 <xhtml xmlns = "http://www.w3.org/1999/xhtml"   
        xmlns:h = "http://java.sun.com/jsf/html"
-       xmlns:ui = "http://java.sun.com/jsf/facelets">
+       xmlns:ui = "http://java.sun.com/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <h:body>
@@ -12,9 +13,33 @@
             <ui:define name="title">
                 <title>Persons</title>
             </ui:define>
-            <ui:define name="content">	
-                <ui:include src="../fragments/person_list.xhtml"/>
-               
+            <ui:define name="content">
+            <!-- #####  LIST FORM ##### -->
+            <h:panelGroup rendered="#{personBean.viewType eq 'LIST'}" class="content-segment">
+                    <ui:decorate template="../templates/list.xhtml">
+                        <ui:param name="listBean" value="#{personBean}" />
+                        <ui:define name="list_label">
+                            <h1>Persons</h1>
+                        </ui:define>
+                        <ui:define name="extra_columns">
+                            <h:column>
+                                <f:facet name="header">Surname</f:facet>
+                                    #{persistable.surname}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Date of birth</f:facet>
+                                <h:outputText value="#{persistable.birthday}">
+                                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                                </h:outputText>
+                            </h:column>
+                        </ui:define>
+                    </ui:decorate>
+                </h:panelGroup>
+                
+                <!-- #####  DETAIL FORM ##### -->
+                <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}" class="content-segment">
+                    <ui:include src="../fragments/person_detail.xhtml"/>
+                </h:panelGroup>
             </ui:define>
 
         </ui:composition>

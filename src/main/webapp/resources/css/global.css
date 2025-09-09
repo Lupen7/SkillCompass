@@ -36,6 +36,23 @@ body {
     padding: 80px 160px 80px 160px;
 }
 
+.content-segment {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 
 /** COMPONENTS - FORM **/
 .form-field {
@@ -67,28 +84,29 @@ body {
     padding: 10px 20px 10px 20px;
     text-transform: uppercase;
     background: var(--main-color);
-    color: var(--main-text-color); 
+    color: var(--main-text-color);
     border: none;
-    font-weight: bold; margin:0px 5px 0px 5px;
+    font-weight: bold;
+    margin:0px 5px 0px 5px;
     width: 100px;
 }
 
 .generic_button:hover {
     background: var(--hover-color-medium);
 }
-.save-button {
-    
+.edit-button {
+    background: var(--side-color);
 }
 
-.cancel-button {
-    
+.read-button {
+
 }
 .delete-button {
-    background: var(--side-color);
+
 }
 
 .button_footer {
     text-align: right;
-    padding: 10px; 
+    padding: 10px;
     padding: 10px;
 }

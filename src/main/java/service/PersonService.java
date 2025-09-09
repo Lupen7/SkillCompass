@@ -27,14 +27,14 @@ public class PersonService extends PersistableService{
 
     @Override
     public List<Person> findAll() {
-        System.out.println("\n >>>> looking for persons >>> ");
+       // System.out.println("\n >>>> looking for persons >>> ");
         return em.createQuery("SELECT u FROM Person u ORDER BY u.id", Person.class)
                  .getResultList();
     }
 
     @Override
     public Person findById(long id) {
-        System.out.println("\n >>>> looking for person, ID: " + id);
+        System.out.println("Looking for person, ID: " + id);
 
         TypedQuery<Person> query = em.createNamedQuery("Person.findById", Person.class);
         // Set the value of the named parameter
