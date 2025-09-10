@@ -8,7 +8,7 @@
         <h:outputLabel value="#{personBean.fullName}"/>
     </ui:define>
     <ui:define name="tab1">
-        <h:form id="XXXXXX">
+        
         <h:panelGrid columns="4">
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">ID</h:outputLabel>
@@ -24,7 +24,9 @@
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">Date of birth</h:outputLabel>
-                <h:inputText class="field-input" value="#{personBean.selectedPerson.birthday}" readonly="#{!personBean.isEditable}"/>
+                <h:inputText class="field-input" value="#{personBean.selectedPerson.birthday}" readonly="#{!personBean.isEditable}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+                </h:inputText>
             </h:panelGroup>
         </h:panelGrid>
 
@@ -32,10 +34,7 @@
             <ui:param name="address" value="#{personBean.selectedPerson.address}"/>
         </ui:include>
 
-        <!-- The reusable footer component -->
-        <ui:include src="detail_footer.xhtml">
-            <ui:param name="bean" value="#{personBean}"/>
-        </ui:include>
-        </h:form>
+        
+       
     </ui:define>	
 </ui:composition>	

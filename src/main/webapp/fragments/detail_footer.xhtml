@@ -3,7 +3,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:panelGroup id="button_panel_edit_mode" class="button_footer" layout="block" rendered="#{bean.isEditable}">
-            <h:commandButton value="Save" action="#{bean.saveAction}" styleClass="edit-button generic_button" immediate="true" type="submit"/>
+            <h:commandButton value="Save" action="#{bean.saveAction}" styleClass="edit-button generic_button" type="submit"/>
             <h:commandButton value="Cancel" action="#{bean.cancelAction}" styleClass="read-button generic_button" immediate="true" />
     </h:panelGroup>
 

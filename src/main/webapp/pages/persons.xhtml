@@ -14,32 +14,36 @@
                 <title>Persons</title>
             </ui:define>
             <ui:define name="content">
-            <!-- #####  LIST FORM ##### -->
-            <h:panelGroup rendered="#{personBean.viewType eq 'LIST'}" class="content-segment">
-                    <ui:decorate template="../templates/list.xhtml">
-                        <ui:param name="listBean" value="#{personBean}" />
-                        <ui:define name="list_label">
-                            <h1>Persons</h1>
-                        </ui:define>
-                        <ui:define name="extra_columns">
-                            <h:column>
-                                <f:facet name="header">Surname</f:facet>
-                                    #{persistable.surname}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Date of birth</f:facet>
-                                <h:outputText value="#{persistable.birthday}">
-                                    <f:convertDateTime pattern="dd.MM.yyyy" />
-                                </h:outputText>
-                            </h:column>
-                        </ui:define>
-                    </ui:decorate>
-                </h:panelGroup>
-                
+                <!-- #####  LIST FORM ##### -->
+                <h:form id="list-form">
+                    <h:panelGroup rendered="#{personBean.viewType eq 'LIST'}" class="content-segment">
+                        <ui:decorate template="../templates/list.xhtml">
+                            <ui:param name="listBean" value="#{personBean}" />
+                            <ui:define name="list_label">
+                                <h1>Persons</h1>
+                            </ui:define>
+                            <ui:define name="extra_columns">
+                                <h:column>
+                                    <f:facet name="header">Surname</f:facet>
+                                        #{persistable.surname}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Date of birth</f:facet>
+                                    <h:outputText value="#{persistable.birthday}">
+                                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                            </ui:define>
+                        </ui:decorate>
+                    </h:panelGroup>
+                </h:form>
+
                 <!-- #####  DETAIL FORM ##### -->
-                <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}" class="content-segment">
-                    <ui:include src="../fragments/person_detail.xhtml"/>
-                </h:panelGroup>
+                <h:form id="detail-form">
+                    <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}" class="content-segment">
+                        <ui:include src="../fragments/person_detail.xhtml"/>
+                    </h:panelGroup>
+                </h:form>
             </ui:define>
 
         </ui:composition>

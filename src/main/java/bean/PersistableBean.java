@@ -20,7 +20,7 @@ import service.PersistableService;
  * @author Luboš
  */
 @Named(value = "persistableBean")
-@SessionScoped
+@ViewScoped
 public class PersistableBean implements Serializable {
 
     @Inject
@@ -62,6 +62,7 @@ public class PersistableBean implements Serializable {
         System.out.println("Persistable bean: save action called: " + selectedPersistable.toString());
         service.save(selectedPersistable);
         this.isEditable = false;
+        this.selectedPersistable = service.findById(selectedPersistable.getId());
     }
 
     public void openDetail(Persistable p) {

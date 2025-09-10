@@ -41,6 +41,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     </p>
                 </p:tab>
             </p:tabView>
+            <!-- The reusable footer component -->
+            <ui:include src="../fragments/detail_footer.xhtml">
+                <ui:param name="bean" value="#{personBean}"/>
+            </ui:include>
         </div>
     </h:body>
 </xhtml>

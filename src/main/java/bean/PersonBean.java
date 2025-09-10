@@ -1,6 +1,7 @@
 package bean;
 
 import jakarta.enterprise.context.ConversationScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
