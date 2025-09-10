@@ -22,7 +22,9 @@ public class PersonService extends PersistableService{
 
     @Transactional
     public void save(Person person) {
-        em.persist(person);
+        System.out.println("Mergin person and saving it....");
+        System.out.println(person.toString());
+        em.merge(person);
     }
 
     @Override
@@ -46,6 +48,11 @@ public class PersonService extends PersistableService{
             System.out.println("No Person of id: " + id + "was found.");
             return null; // or throw a custom exception
         }
+    }
+
+    @Override
+    public void save(Persistable persistable) {
+        this.save((Person) persistable);
     }
 
  

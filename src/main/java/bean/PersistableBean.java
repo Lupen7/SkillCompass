@@ -20,11 +20,11 @@ import service.PersistableService;
  * @author Luboš
  */
 @Named(value = "persistableBean")
-@ViewScoped
+@SessionScoped
 public class PersistableBean implements Serializable {
 
     @Inject
-    private PersistableService service;
+    protected PersistableService service;
     protected List<? extends Persistable> persistables;
     protected Persistable selectedPersistable;
     protected boolean isEditable = false;
@@ -48,7 +48,20 @@ public class PersistableBean implements Serializable {
     }
 
     public void cancelAction() {
+        System.out.println("Persistable bean: cancel action called...");
         setViewType(ViewType.LIST);
+        this.isEditable = false;
+    }
+    
+    public void deleteAction() {
+        System.out.println("Persistable bean: delete action called...");
+        setViewType(ViewType.LIST);
+    }
+    
+    public void saveAction() {
+        System.out.println("Persistable bean: save action called: " + selectedPersistable.toString());
+        service.save(selectedPersistable);
+        this.isEditable = false;
     }
 
     public void openDetail(Persistable p) {

@@ -15,34 +15,32 @@
                 </ui:insert>
             </div>
             <div id="list_body">
-                <h:form>
-                    <h:dataTable value="#{listBean.persistables}" var="persistable" class="list_table">
-                        <h:column>
-                            <f:facet name="header">ID</f:facet>
-                                #{persistable.id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Name</f:facet>
-                                #{persistable.name}
-                        </h:column>
-                        <ui:insert name="extra_columns" >
-                            Default extra columns
-                        </ui:insert>
-                        <h:column>
-                            <div id="detail_btn" class="btn">
-                                <h:commandLink id="detail_btn_link" action="#{listBean.openDetail(persistable)}">
-                                    <f:param name="persistableId" value="#{persistable.id}"/>
-                                    <h:graphicImage library="icons" name="next_grey.png" width="20" height="20"/>
-                                </h:commandLink> 
-                            </div>
-                        </h:column>
-                        <f:facet name="footer">
-                            <div id="new_btn" class="btn">
-                                <h:commandLink id="new_btn_link" action="#{listBean.openDetail(0)}">New</h:commandLink>
-                            </div>
-                        </f:facet>
-                    </h:dataTable>
-                </h:form>
+                <h:dataTable value="#{listBean.persistables}" var="persistable" class="list_table">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                            #{persistable.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                            #{persistable.name}
+                    </h:column>
+                    <ui:insert name="extra_columns" >
+                        Default extra columns
+                    </ui:insert>
+                    <h:column>
+                        <div id="detail_btn" class="btn">
+                            <h:commandLink id="detail_btn_link" action="#{listBean.openDetail(persistable)}">
+                                <h:graphicImage library="icons" name="next_grey.png" width="20" height="20"/>
+                            </h:commandLink> 
+                        </div>
+                    </h:column>
+                    <f:facet name="footer">
+                        <div id="new_btn" class="btn">
+                            <h:commandLink id="new_btn_link" action="#{listBean.openDetail(0)}">New</h:commandLink>
+                        </div>
+                    </f:facet>
+                </h:dataTable>
+
             </div>
         </div>
     </h:body>

@@ -4,11 +4,11 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 template = "../templates/tab_view.xhtml">
-
     <ui:define name="tabs_title">
         <h:outputLabel value="#{personBean.fullName}"/>
     </ui:define>
     <ui:define name="tab1">
+        <h:form id="XXXXXX">
         <h:panelGrid columns="4">
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label">ID</h:outputLabel>
@@ -33,10 +33,9 @@
         </ui:include>
 
         <!-- The reusable footer component -->
-
-        
         <ui:include src="detail_footer.xhtml">
             <ui:param name="bean" value="#{personBean}"/>
         </ui:include>
+        </h:form>
     </ui:define>	
 </ui:composition>	

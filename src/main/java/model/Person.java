@@ -83,7 +83,8 @@ public class Person extends Persistable implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Person[ id=" + id + " ]";
+        String personString = "model.Person[ id=" + id + " ]" + " [name="+name+"]" + "[surname="+surname+"]";
+        return personString;
     }
 
 }

@@ -4,25 +4,20 @@
  */
 package service;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import model.Persistable;
 
-@ApplicationScoped
+@Transactional
 public abstract class PersistableService {
     
     @PersistenceContext
     private EntityManager em;
 
     @Transactional
-    public void save(Persistable persistable) {
-        em.persist(persistable);
-    }
-
-    
+    public abstract void save(Persistable persistable);
     public abstract List<? extends Persistable> findAll();
     public abstract Persistable findById(long id);
 
