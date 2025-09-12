@@ -17,10 +17,10 @@ public abstract class PersistableService {
     private EntityManager em;
 
     @Transactional
-    public abstract void save(Persistable persistable);
+    public abstract Persistable save(Persistable persistable);
     public abstract List<? extends Persistable> findAll();
     public abstract Persistable findById(long id);
-
+    public abstract void delete(Persistable persistable);
     /*
     public List<Persistable> findAll(Class clazz, String db_table) {
         return em.createQuery("SELECT u FROM " + db_table + " u ORDER BY u.id", clazz)

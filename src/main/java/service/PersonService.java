@@ -15,23 +15,23 @@ import jakarta.transaction.Transactional;
 import model.Persistable;
 
 @ApplicationScoped
-public class PersonService extends PersistableService{
+public class PersonService extends PersistableService {
 
     @PersistenceContext
     private EntityManager em;
 
     @Transactional
-    public void save(Person person) {
+    public Person save(Person person) {
         System.out.println("Mergin person and saving it....");
         System.out.println(person.toString());
-        em.merge(person);
+        return em.merge(person);
     }
 
     @Override
     public List<Person> findAll() {
-       // System.out.println("\n >>>> looking for persons >>> ");
+        // System.out.println("\n >>>> looking for persons >>> ");
         return em.createQuery("SELECT u FROM Person u ORDER BY u.id", Person.class)
-                 .getResultList();
+                .getResultList();
     }
 
     @Override
@@ -51,9 +51,19 @@ public class PersonService extends PersistableService{
     }
 
     @Override
-    public void save(Persistable persistable) {
-        this.save((Person) persistable);
+    public Persistable save(Persistable persistable) {
+        return this.save((Person) persistable);
     }
 
- 
+    @Override
+    public void delete(Persistable persistable) {
+        this.delete((Person) persistable);
+    }
+
+    public void delete(Person person) {
+        System.out.println("Deleting person: " + person.getId());
+        Person managedPerson = em.merge(person);
+        em.remove(managedPerson);
+    }
+
 }

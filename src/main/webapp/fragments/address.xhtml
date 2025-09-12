@@ -20,12 +20,14 @@
 
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label" for="state" value="State"/>
-                <h:selectOneMenu class="field-input" value="#{address.state.code}">
+                <h:selectOneMenu class="field-input" value="#{address.state}">
                     <f:selectItem itemLabel="-- Select an option --" itemValue="" noSelectionOption="true" />
                     <f:selectItems value="#{codelistBean.getCodeListItems('STATES')}" 
                                    var="state" 
-                                   itemValue="#{state.code}" 
+                                   itemValue="#{state}" 
                                    itemLabel="#{state.name}"/>
+                    <f:converter converterId="stateConverter" />
+                    <f:attribute name="states" value="#{codelistBean.getCodeListItems('STATES')}" />
                 </h:selectOneMenu>
             </h:panelGroup>
 

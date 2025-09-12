@@ -4,15 +4,15 @@
  */
 package bean;
 
-import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
 import model.Persistable;
-import model.Person;
-import model.codelist.ViewType;
+import model.codelist.enumer.ViewType;
 import service.PersistableService;
 
 /**
@@ -52,20 +52,35 @@ public class PersistableBean implements Serializable {
         setViewType(ViewType.LIST);
         this.isEditable = false;
     }
-    
+
     public void deleteAction() {
-        System.out.println("Persistable bean: delete action called...");
+        System.out.println("Persistable bean: delete action called... Pesistable ID: " + selectedPersistable.getId());
+        
+        try {
+            // Call the service method to remove the user from the database
+            service.delete(selectedPersistable);
+            // Remove the user from the local list to refresh the UI
+            this.persistables.remove(selectedPersistable);
+            // Optional: Show a success message
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Item deleted successfully!", null));
+        } catch (Exception e) {
+            // Handle any exceptions and show an error message
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error deleting user.", null));
+        }
         setViewType(ViewType.LIST);
     }
-    
+
     public void saveAction() {
-        System.out.println("Persistable bean: save action called: " + selectedPersistable.toString());
-        service.save(selectedPersistable);
+        selectedPersistable = service.save(selectedPersistable);
         this.isEditable = false;
-        this.selectedPersistable = service.findById(selectedPersistable.getId());
+        //this.selectedPersistable = service.findById(selectedPersistable.getId());
+        System.out.println("Persistable bean: save action called: " + selectedPersistable.toString());
     }
 
     public void openDetail(Persistable p) {
+        System.out.println("Opening persistable detail: " + p.toString());
         setSelectedPersistable(p);
         setViewType(ViewType.DETAIL);
     }

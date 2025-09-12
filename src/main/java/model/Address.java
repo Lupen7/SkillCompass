@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -45,6 +46,8 @@ public class Address extends Persistable implements Serializable {
     @JoinColumn(name = "state_fk", referencedColumnName = "code")
     @ManyToOne
     private CLState state;
+    @OneToOne(mappedBy = "address")
+    private Person person;
 
     public Address() {
     }
@@ -78,10 +81,12 @@ public class Address extends Persistable implements Serializable {
     }
 
     public CLState getState() {
+        System.out.println ("Getting state from Address entity, state is: " + (state == null ? "NULL" : state.getCode()));
         return state;
     }
 
     public void setState(CLState state) {
+        System.out.println ("Setting new state in Address entity");
         this.state = state;
     }
 

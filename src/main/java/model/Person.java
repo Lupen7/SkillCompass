@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -33,7 +34,7 @@ public class Person extends Persistable implements Serializable {
     @Column(name = "birth_date")
     private Date birthday;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_fk")
     private Address address;
 
@@ -61,6 +62,9 @@ public class Person extends Persistable implements Serializable {
     }
 
     public Address getAddress() {
+        if (address == null) {
+            address = new Address();
+        }
         return address;
     }
 

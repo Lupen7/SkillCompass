@@ -8,7 +8,8 @@
     </h:panelGroup>
 
     <h:panelGroup id="button_panel_read_mode" class="button_footer" layout="block" rendered="#{!bean.isEditable}">
-        <h:commandButton value="Delete" action="#{bean.deleteAction}" styleClass="edit-button generic_button" rendered="true" immediate="true"/>
+        <h:commandButton value="Delete" action="#{bean.deleteAction}" styleClass="edit-button generic_button" rendered="true" immediate="true"
+                         onclick="return confirm('Are you sure you want to delete this item?');" />
         <h:commandButton value="Edit" action="#{bean.editAction}" styleClass="edit-button generic_button" immediate="true" />
         <h:commandButton value="Close" action="#{bean.cancelAction}" styleClass="read-button generic_button" immediate="true" />
     </h:panelGroup>
