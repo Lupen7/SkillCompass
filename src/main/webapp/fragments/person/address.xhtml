@@ -4,23 +4,26 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition>
-        <h:panelGrid columns="4" id="addressPanel">
+        <h:panelGrid columns="4" id="addressPanel" class="detail-section">
+            <f:facet name="header">
+                <h:outputText value="Address" />
+            </f:facet>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label" for="street" value="Line"/>
-                <h:inputText class="field-input" id="street" value="#{address.line}" required="true"/>
+                <h:inputText class="field-input" id="street" value="#{address.line}" required="true" readonly="#{!isEditable}"/>
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label" for="city" value="City"/>
-                <h:inputText class="field-input" id="city" value="#{address.city}" required="true"/>
+                <h:inputText class="field-input" id="city" value="#{address.city}" required="true" readonly="#{!isEditable}"/>
             </h:panelGroup>
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label" for="zip" value="Postal code"/>
-                <h:inputText class="field-input" id="zip" value="#{address.postalCode}" required="true"/>
+                <h:inputText class="field-input" id="zip" value="#{address.postalCode}" required="true" readonly="#{!isEditable}"/>
             </h:panelGroup>
 
             <h:panelGroup layout="block" class="form-field">
                 <h:outputLabel class="field-label" for="state" value="State"/>
-                <h:selectOneMenu class="field-input" value="#{address.state}">
+                <h:selectOneMenu class="field-input" value="#{address.state}" readonly="#{!isEditable}">
                     <f:selectItem itemLabel="-- Select an option --" itemValue="" noSelectionOption="true" />
                     <f:selectItems value="#{codelistBean.getCodeListItems('STATES')}" 
                                    var="state" 
@@ -30,7 +33,6 @@
                     <f:attribute name="states" value="#{codelistBean.getCodeListItems('STATES')}" />
                 </h:selectOneMenu>
             </h:panelGroup>
-
         </h:panelGrid>
     </ui:composition>
 

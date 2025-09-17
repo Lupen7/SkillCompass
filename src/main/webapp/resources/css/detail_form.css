@@ -1,0 +1,10 @@
+
+.detail-section {
+    border: var(--soft-border-style);
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.detail-section th {
+    padding-left: 20px;
+}

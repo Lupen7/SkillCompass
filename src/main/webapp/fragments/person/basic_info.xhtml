@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition>
+        <h:panelGroup id ="text_content">
+            <h:panelGrid columns="4" class="detail-section">
+                <f:facet name="header">
+                    <h:outputText value="Information"/>
+                </f:facet>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">ID</h:outputLabel>
+                    <h:inputText class="field-input" value="#{person.id}" readonly="#{!isEditable}"/>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">First name</h:outputLabel>
+                    <h:inputText class="field-input" value="#{person.name}" readonly="#{!isEditable}"/>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">Surname</h:outputLabel>
+                    <h:inputText class="field-input" value="#{person.surname}" readonly="#{!isEditable}"/>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">Date of birth</h:outputLabel>
+                    <h:inputText class="field-input" value="#{person.birthday}" readonly="#{!isEditable}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+                    </h:inputText>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">Sex</h:outputLabel>
+                    <h:selectOneMenu class="field-input" value="#{person.sex}" readonly="#{!isEditable}">
+                        <f:selectItem itemLabel="-- Select an option --" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{codelistBean.getEnumList()}" 
+                                       var="sexType" 
+                                       itemValue="#{sexType.sChar}" 
+                                       itemLabel="#{sexType.sString}"/>
+                    </h:selectOneMenu>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">E-mail</h:outputLabel>
+                    <h:inputText class="field-input" value="#{person.email}" readonly="#{!isEditable}"/>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="form-field">
+                    <h:outputLabel class="field-label">Phone number</h:outputLabel>
+                    <h:inputText class="field-input" value="#{person.phone}" readonly="#{!isEditable}"/>
+                </h:panelGroup>
+            </h:panelGrid>
+
+        </h:panelGroup>
+    </ui:composition>
+</html>

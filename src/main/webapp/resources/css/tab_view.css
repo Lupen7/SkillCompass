@@ -6,7 +6,7 @@ form {
 
 .tab-view-container {
     text-align: left;
-
+    display:inline-block;
 }
 
 #tab_view_title {

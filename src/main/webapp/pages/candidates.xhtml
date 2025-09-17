@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<xhtml xmlns = "http://www.w3.org/1999/xhtml"   
+       xmlns:h = "http://java.sun.com/jsf/html"
+       xmlns:ui = "http://java.sun.com/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <h:body>
+        <ui:composition template = "../templates/template.xhtml">	
+            <ui:define name="title">
+                <title>Candidates</title>
+            </ui:define>
+            <ui:define name="content">
+                <!-- #####  LIST FORM ##### -->
+                <h:form id="list-form">
+                    <h:panelGroup rendered="#{personBean.viewType eq 'LIST'}" class="content-segment">
+                        <ui:decorate template="../templates/list.xhtml">
+                            <ui:param name="listBean" value="#{personBean}" />
+                            <ui:define name="list_label">
+                                <h1>Persons</h1>
+                            </ui:define>
+                            <ui:define name="extra_columns">
+                                <h:column>
+                                    <f:facet name="header">Surname</f:facet>
+                                        #{persistable.surname}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Date of birth</f:facet>
+                                    <h:outputText value="#{persistable.birthday}">
+                                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                            </ui:define>
+                        </ui:decorate>
+                    </h:panelGroup>
+                </h:form>
+
+                <!-- #####  DETAIL FORM ##### -->
+                <h:form id="detail-form">
+                    <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}" class="content-segment">
+                        <ui:include src="../fragments/person_detail.xhtml"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</xhtml>
+

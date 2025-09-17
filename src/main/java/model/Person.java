@@ -33,10 +33,40 @@ public class Person extends Persistable implements Serializable {
     private String surname;
     @Column(name = "birth_date")
     private Date birthday;
-
+    @Column(name = "email")
+    private String email;
+    @Column(name = "phone")
+    private String phone;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_fk")
     private Address address;
+    @Column(name="sex")
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
 
     public Date getBirthday() {
         return birthday;
@@ -71,7 +101,7 @@ public class Person extends Persistable implements Serializable {
     public void setAddress(Address address) {
         this.address = address;
     }
-   
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -87,7 +117,7 @@ public class Person extends Persistable implements Serializable {
 
     @Override
     public String toString() {
-        String personString = "model.Person[ id=" + id + " ]" + " [name="+name+"]" + "[surname="+surname+"]";
+        String personString = "model.Person[ id=" + id + " ]" + " [name=" + name + "]" + "[surname=" + surname + "]";
         return personString;
     }
 

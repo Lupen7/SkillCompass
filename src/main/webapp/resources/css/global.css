@@ -12,6 +12,7 @@
     --font: Verdana;
     --main-border-style: 2px solid black;
     --side-border-style: 1px solid grey;
+    --soft-border-style: 1px solid #d1d1d1;
 }
 
 html, body {

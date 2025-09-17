@@ -42,7 +42,7 @@
 .list_table tbody tr{
     background: var(--content-color);
     color: var(--content-text-color);
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: var(--soft-border-style);
 }
 
 .list_table tfoot tr{

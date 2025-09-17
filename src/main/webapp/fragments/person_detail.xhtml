@@ -8,33 +8,20 @@
         <h:outputLabel value="#{personBean.fullName}"/>
     </ui:define>
     <ui:define name="tab1">
-        
-        <h:panelGrid columns="4">
-            <h:panelGroup layout="block" class="form-field">
-                <h:outputLabel class="field-label">ID</h:outputLabel>
-                <h:inputText class="field-input" value="#{personBean.selectedPerson.id}" readonly="#{!personBean.isEditable}"/>
-            </h:panelGroup>
-            <h:panelGroup layout="block" class="form-field">
-                <h:outputLabel class="field-label">First name</h:outputLabel>
-                <h:inputText class="field-input" value="#{personBean.selectedPerson.name}" readonly="#{!personBean.isEditable}"/>
-            </h:panelGroup>
-            <h:panelGroup layout="block" class="form-field">
-                <h:outputLabel class="field-label">Surname</h:outputLabel>
-                <h:inputText class="field-input" value="#{personBean.selectedPerson.surname}" readonly="#{!personBean.isEditable}"/>
-            </h:panelGroup>
-            <h:panelGroup layout="block" class="form-field">
-                <h:outputLabel class="field-label">Date of birth</h:outputLabel>
-                <h:inputText class="field-input" value="#{personBean.selectedPerson.birthday}" readonly="#{!personBean.isEditable}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" type="date" />
-                </h:inputText>
-            </h:panelGroup>
-        </h:panelGrid>
 
-        <ui:include src="address.xhtml">
+        <ui:include src="person/basic_info.xhtml">
+            <ui:param name="person" value="#{personBean.selectedPerson}"/>
+            <ui:param name="isEditable" value="#{personBean.isEditable}"/>
+        </ui:include>
+        <ui:include src="person/address.xhtml">
             <ui:param name="address" value="#{personBean.selectedPerson.address}"/>
+            <ui:param name="isEditable" value="#{personBean.isEditable}"/>
         </ui:include>
 
-        
-       
+
+        <h:panelGroup id ="photo_content">
+
+
+        </h:panelGroup>
     </ui:define>	
 </ui:composition>	
