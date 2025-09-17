@@ -38,11 +38,17 @@
                     </h:panelGroup>
                 </h:form>
 
+
                 <!-- #####  DETAIL FORM ##### -->
                 <h:form id="detail-form">
-                    <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}" class="content-segment">
-                        <ui:include src="../fragments/person_detail.xhtml"/>
-                    </h:panelGroup>
+                    <h:panelGrid columns="2">
+                        <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}">
+                            <ui:include src="../fragments/chronoline.xhtml"/>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{personBean.viewType eq 'DETAIL'}" class="content-segment">
+                            <ui:include src="../fragments/candidate_detail.xhtml"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
                 </h:form>
             </ui:define>
 

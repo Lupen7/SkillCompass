@@ -1,0 +1,84 @@
+#chrono_line {
+    width: 340px;
+    background-color: white;
+    padding: 20px;
+    color: var(--content-text-color);
+}
+
+.chronoline-title {
+    color:black;
+    text-align: center;
+}
+
+.ui-chronoline-event {
+    
+}
+
+#chrono_line .ui-card-subtitle {
+    background: transparent;
+    font-size: 12px;
+    color: var(--main-text-color);
+}
+
+#chrono_line .ui-card-content {
+     background: transparent;
+     font-size: 12px;
+     padding: 0px;
+}
+
+#chrono_line .ui-card{
+    background: var(--main-color);
+    padding: 0px;
+}
+
+#chrono_line .ui-card-title {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+#chrono_line .ui-chronoline-event .custom-marker {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/*bod*/
+#chrono_line .ui-chronoline .ui-chronoline-event .ui-chronoline-event-separator .ui-chronoline-event-marker {
+    border-width: 3px;
+    border-color: var(--main-color);
+    background-color: var(--side-color);
+}
+
+/*spojnice*/
+#chrono_line .ui-chronoline-event .ui-chronoline-event-connector {
+    width: 3px;
+    border-color: var(--main-color);
+}
+
+.ui-chronoline-event .ui-chronoline-event-content,
+.ui-chronoline-event .ui-chronoline-event-opposite {
+    line-height: 1;
+    color: var(--content-text-color);
+}
+
+@media screen and (max-width: 960px) {
+    .customized-chronoline .ui-chronoline-event:nth-child(even) {
+        flex-direction: row !important;
+    }
+
+    .customized-chronoline .ui-chronoline-event:nth-child(even) .ui-chronoline-event-content {
+        text-align: left !important;
+    }
+
+    .customized-chronoline .ui-chronoline-event-opposite {
+        flex: 0;
+    }
+
+    .customized-chronoline .ui-card {
+        margin-top: 1rem;
+    }
+}

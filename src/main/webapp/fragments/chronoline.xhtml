@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<xhtml xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="jakarta.faces.html">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="chronoline.css"/>
+    </h:head>
+    <h:body>
+        <div class="card" id="chrono_line">
+            <h4 class="chronoline-title">Timeline</h4>
+            <p:chronoline value="#{chronolineView.events}" var="event" align="alternate" >
+                <p:card>
+                    <f:facet name="title">
+                        #{event.status}
+                    </f:facet>
+                    <f:facet name="subtitle">
+                        #{event.date}
+                    </f:facet>
+                    <p>My event content</p>
+                </p:card>
+
+            </p:chronoline>
+        </div>
+
+    </h:body>
+</xhtml>
